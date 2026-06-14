@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEU Memeverse - Presentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            position: relative;
+        }
+        .slide.active { display: flex; }
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        h2 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #feca57;
+            text-align: center;
+        }
+        h3 {
+            font-size: 24px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        p, li {
+            font-size: 22px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.85);
+            max-width: 900px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            text-align: left;
+            max-width: 800px;
+        }
+        ul li {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            text-align: left;
+        }
+        ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #feca57;
+            font-weight: bold;
+        }
+        table {
+            border-collapse: collapse;
+            font-size: 18px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 18px;
+            text-align: left;
+        }
+        th {
+            background: rgba(255,255,255,0.1);
+            color: #feca57;
+            font-weight: 700;
+        }
+        td { color: rgba(255,255,255,0.85); }
+        pre {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            text-align: left;
+            max-width: 850px;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin: 10px 0;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        .team-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+        .team-card .name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .team-card .id {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+        .team-card .role {
+            font-size: 14px;
+            color: #feca57;
+            font-weight: 600;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        .btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50rem;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: rgba(255,255,255,0.2); }
+        .logo {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 28px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+        .meta {
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+        }
+        .github-link {
+            color: #48dbfb;
+            text-decoration: none;
+            font-family: monospace;
+        }
+        .highlight {
+            color: #feca57;
+            font-weight: 700;
+        }
+        .screenshot-placeholder {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            max-width: 1100px;
+        }
+        .shot {
+            background: rgba(255,255,255,0.06);
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+        .big-check {
+            font-size: 72px;
+            margin-bottom: 20px;
+            color: #1dd1a1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active">
+    <div class="slide-number">1 / 12</div>
+    <div class="logo"><i class="bi bi-emoji-laughing"></i></div>
+    <h1>DEU Memeverse</h1>
+    <div class="subtitle">Dong-Eui University Student Meme Board</div>
+    <div class="meta">
+        Course: Web Programming II | Instructor: Hamdi | Team: CodeCrafters
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+    <div class="slide-number">2 / 12</div>
+    <h2>Team Members & Roles</h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="name">Ahad Abdul</div>
+            <div class="id">-</div>
+            <div class="role">Team Leader</div>
+        </div>
+        <div class="team-card">
+            <div class="name">Hasan MD Tanvir</div>
+            <div class="id">20244169</div>
+            <div class="role">Frontend Developer</div>
+        </div>
+        <div class="team-card">
+            <div class="name">Das Sourav</div>
+            <div class="id">20244163</div>
+            <div class="role">Backend Developer</div>
+        </div>
+        <div class="team-card">
+            <div class="name">KC Surya</div>
+            <div class="id">20244125</div>
+            <div class="role">UI/UX Designer</div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+    <div class="slide-number">3 / 12</div>
+    <h2>Project Overview</h2>
+    <p><strong>DEU Memeverse</strong> is a social meme-sharing platform built exclusively for Dong-Eui University students.</p>
+    <br>
+    <ul>
+        <li>Register with name, student ID, and password</li>
+        <li>Create posts with text, photos, or GIFs</li>
+        <li>Like posts and follow other students</li>
+        <li>View profiles and manage accounts</li>
+        <li>Admin panel for content moderation</li>
+    </ul>
+    <br>
+    <p>GitHub: <a class="github-link" href="https://github.com/AbdullAhad1/deu-meme-local">github.com/AbdullAhad1/deu-meme-local</a></p>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide">
+    <div class="slide-number">4 / 12</div>
+    <h2>Features Implemented</h2>
+    <div class="two-col">
+        <div>
+            <h3>User Features</h3>
+            <ul>
+                <li>Registration / Login with password</li>
+                <li>Create text/image/GIF posts</li>
+                <li>Like / unlike posts</li>
+                <li>Follow / unfollow users</li>
+                <li>Edit profile bio and avatar</li>
+                <li>View profiles and student list</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Admin Features</h3>
+            <ul>
+                <li>Secure admin login</li>
+                <li>Delete posts with confirm</li>
+                <li>Delete users and content with confirm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide">
+    <div class="slide-number">5 / 12</div>
+    <h2>WP II Requirements</h2>
+    <table>
+        <tr><th>Requirement</th><th>Implementation</th></tr>
+        <tr><td>MySQLi</td><td>config.php uses procedural mysqli_*</td></tr>
+        <tr><td>password_hash()</td><td>Used during registration</td></tr>
+        <tr><td>password_verify()</td><td>Used during login</td></tr>
+        <tr><td>GD Thumbnails</td><td>upload_helpers.php generates thumbnails</td></tr>
+        <tr><td>finfo MIME Validation</td><td>finfo_file() validates JPEG/PNG/GIF</td></tr>
+        <tr><td>uniqid() Filenames</td><td>uniqid() + rand() for every upload</td></tr>
+        <tr><td>2MB Upload Limit</td><td>Hardcoded in upload validator</td></tr>
+        <tr><td>JS confirm() Delete</td><td>Admin delete forms use confirm()</td></tr>
+    </table>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide">
+    <div class="slide-number">6 / 12</div>
+    <h2>Technology Stack</h2>
+    <div class="two-col">
+        <div>
+            <h3>Frontend</h3>
+            <ul>
+                <li>HTML5, CSS3, JavaScript</li>
+                <li>Bootstrap Icons</li>
+                <li>GIPHY API for GIF picker</li>
+                <li>QR Code API for sharing</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Backend</h3>
+            <ul>
+                <li>PHP 8.x</li>
+                <li>MySQLi procedural</li>
+                <li>MySQL / MariaDB</li>
+                <li>GD Library for thumbnails</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <p>Tools: <span class="highlight">XAMPP, VS Code, Git, GitHub, phpMyAdmin</span></p>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+    <div class="slide-number">7 / 12</div>
+    <h2>Database Schema</h2>
+    <table>
+        <tr><th>Table</th><th>Columns</th></tr>
+        <tr><td>user</td><td>id, student_id, name, password, avatar, bio, created_at</td></tr>
+        <tr><td>post</td><td>id, user_id, message, image_file, thumbnail_file, created_at</td></tr>
+        <tr><td>likes</td><td>id, post_id, user_id</td></tr>
+        <tr><td>follows</td><td>id, follower_id, following_id</td></tr>
+    </table>
+    <br>
+    <p>User → Posts (1:N) | User → Likes (1:N) | User → Follows (1:N)</p>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+    <div class="slide-number">8 / 12</div>
+    <h2>Individual Tasks</h2>
+    <div class="two-col">
+        <div>
+            <h3>Ahad Abdul — Leader</h3>
+            <ul>
+                <li>Planning and task distribution</li>
+                <li>config.php MySQLi helpers</li>
+                <li>database.sql setup</li>
+                <li>GitHub and documentation</li>
+            </ul>
+            <h3>Hasan MD Tanvir — Frontend</h3>
+            <ul>
+                <li>HTML/CSS/JS pages</li>
+                <li>GIF picker and QR code</li>
+                <li>Responsive design</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Das Sourav — Backend</h3>
+            <ul>
+                <li>Login/register PHP logic</li>
+                <li>Like/follow features</li>
+                <li>upload_helpers.php</li>
+                <li>Admin delete operations</li>
+            </ul>
+            <h3>KC Surya — UI/UX</h3>
+            <ul>
+                <li>Color scheme and fonts</li>
+                <li>Profile/post layouts</li>
+                <li>Mobile navigation</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+    <div class="slide-number">9 / 12</div>
+    <h2>Key Code Highlights</h2>
+    <pre>// config.php - MySQLi connection helper
+function getDB() {
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if (!$conn) die("Connection failed");
+    return $conn;
+}</pre>
+    <pre>// auth.php - Password security
+$hash = password_hash($password, PASSWORD_DEFAULT);
+password_verify($password, $stored_hash);</pre>
+    <pre>// upload_helpers.php - MIME validation
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mime = finfo_file($finfo, $file['tmp_name']);</pre>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide">
+    <div class="slide-number">10 / 12</div>
+    <h2>Screenshots / Live Demo</h2>
+    <div class="screenshot-placeholder">
+        <div class="shot">Auth Page</div>
+        <div class="shot">Home Feed</div>
+        <div class="shot">Profile Page</div>
+        <div class="shot">Users Page</div>
+        <div class="shot">Admin Panel</div>
+    </div>
+    <br>
+    <p style="font-size:16px;color:rgba(255,255,255,0.5);">Add real screenshots before presentation</p>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide">
+    <div class="slide-number">11 / 12</div>
+    <h2>Challenges & Solutions</h2>
+    <table>
+        <tr><th>Challenge</th><th>Solution</th></tr>
+        <tr><td>PDO not allowed</td><td>Rewrote all queries to MySQLi</td></tr>
+        <tr><td>No password column in old DB</td><td>Added password column and updated schema</td></tr>
+        <tr><td>Existing users couldn't log in</td><td>Auto-save password hash on first login</td></tr>
+        <tr><td>Unsafe/large uploads</td><td>2MB limit + finfo MIME validation</td></tr>
+        <tr><td>Admin session warning</td><td>Added isset() checks</td></tr>
+    </table>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide">
+    <div class="slide-number">12 / 12</div>
+    <div class="big-check"><i class="bi bi-check-circle-fill"></i></div>
+    <h2>Conclusion</h2>
+    <p><strong>Project Status:</strong> <span class="highlight">Completed and ready for demonstration</span></p>
+    <br>
+    <p>GitHub: <a class="github-link" href="https://github.com/AbdullAhad1/deu-meme-local">github.com/AbdullAhad1/deu-meme-local</a></p>
+    <br><br>
+    <h3>Thank You — Questions?</h3>
+    <p style="font-size:18px;margin-top:20px;">
+        Ahad Abdul | Hasan MD Tanvir 20244169 | Das Sourav 20244163 | KC Surya 20244125
+    </p>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="prevSlide()">Previous</button>
+    <button class="btn" onclick="nextSlide()">Next</button>
+    <button class="btn" onclick="toggleFullscreen()">Fullscreen</button>
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        slides[index].classList.add('active');
+        current = index;
+    }
+
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'f') toggleFullscreen();
+    });
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+</script>
+
+</body>
+</html>
