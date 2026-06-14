@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEU Memeverse - KC Surya</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            position: relative;
+        }
+        .slide.active { display: flex; }
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+        }
+        .presenter-label {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #feca57;
+            padding: 10px 24px;
+            border-radius: 50rem;
+            font-size: 16px;
+            font-weight: 700;
+            z-index: 100;
+        }
+        h2 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #feca57;
+            text-align: center;
+        }
+        h3 {
+            font-size: 24px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        p, li {
+            font-size: 22px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.85);
+            max-width: 900px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            text-align: left;
+            max-width: 800px;
+        }
+        ul li {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            text-align: left;
+        }
+        ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #feca57;
+            font-weight: bold;
+        }
+        table {
+            border-collapse: collapse;
+            font-size: 18px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 18px;
+            text-align: left;
+        }
+        th {
+            background: rgba(255,255,255,0.1);
+            color: #feca57;
+            font-weight: 700;
+        }
+        td { color: rgba(255,255,255,0.85); }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        .github-link {
+            color: #48dbfb;
+            text-decoration: none;
+            font-family: monospace;
+        }
+        .highlight {
+            color: #feca57;
+            font-weight: 700;
+        }
+        .big-check {
+            font-size: 72px;
+            margin-bottom: 20px;
+            color: #1dd1a1;
+        }
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        .btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50rem;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: rgba(255,255,255,0.2); }
+    </style>
+</head>
+<body>
+
+<div class="presenter-label">KC Surya — UI/UX Designer</div>
+
+<!-- Slide 1 -->
+<div class="slide active">
+    <div class="slide-number">1 / 3</div>
+    <h2>Individual Tasks</h2>
+    <div class="two-col">
+        <div>
+            <h3>Ahad Abdul — Leader</h3>
+            <ul>
+                <li>Planning and task distribution</li>
+                <li>config.php MySQLi helpers</li>
+                <li>database.sql setup</li>
+                <li>GitHub and documentation</li>
+            </ul>
+            <h3>Hasan MD Tanvir — Frontend</h3>
+            <ul>
+                <li>HTML/CSS/JS pages</li>
+                <li>GIF picker and QR code</li>
+                <li>Responsive design</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Das Sourav — Backend</h3>
+            <ul>
+                <li>Login/register PHP logic</li>
+                <li>Like/follow features</li>
+                <li>upload_helpers.php</li>
+                <li>Admin delete operations</li>
+            </ul>
+            <h3>KC Surya — UI/UX</h3>
+            <ul>
+                <li>Color scheme and fonts</li>
+                <li>Profile/post layouts</li>
+                <li>Mobile navigation</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+    <div class="slide-number">2 / 3</div>
+    <h2>Database Schema</h2>
+    <table>
+        <tr><th>Table</th><th>Columns</th></tr>
+        <tr><td>user</td><td>id, student_id, name, password, avatar, bio, created_at</td></tr>
+        <tr><td>post</td><td>id, user_id, message, image_file, thumbnail_file, created_at</td></tr>
+        <tr><td>likes</td><td>id, post_id, user_id</td></tr>
+        <tr><td>follows</td><td>id, follower_id, following_id</td></tr>
+    </table>
+    <br>
+    <p>User → Posts (1:N) | User → Likes (1:N) | User → Follows (1:N)</p>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+    <div class="slide-number">3 / 3</div>
+    <div class="big-check"><i class="bi bi-check-circle-fill"></i></div>
+    <h2>Conclusion</h2>
+    <p><strong>Project Status:</strong> <span class="highlight">Completed and ready for demonstration</span></p>
+    <br>
+    <p>GitHub: <a class="github-link" href="https://github.com/AbdullAhad1/deu-meme-local">github.com/AbdullAhad1/deu-meme-local</a></p>
+    <br><br>
+    <h3>Thank You — Questions?</h3>
+    <p style="font-size:18px;margin-top:20px;">
+        Ahad Abdul | Hasan MD Tanvir 20244169 | Das Sourav 20244163 | KC Surya 20244125
+    </p>
+</div>
+
+<div class="controls">
+    <button class="btn" onclick="prevSlide()">Previous</button>
+    <button class="btn" onclick="nextSlide()">Next</button>
+    <button class="btn" onclick="toggleFullscreen()">Fullscreen</button>
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        slides[index].classList.add('active');
+        current = index;
+    }
+
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'f') toggleFullscreen();
+    });
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+</script>
+
+</body>
+</html>
