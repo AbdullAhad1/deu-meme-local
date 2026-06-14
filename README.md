@@ -24,7 +24,4 @@ Social meme board project for Dong-Eui University.
 - 2 MB upload limit
 - JavaScript `confirm()` for delete actions
 
-## Default admin
 
-- Username: `admin`
-- Password: `deu2024`
