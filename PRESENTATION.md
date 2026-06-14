@@ -18,85 +18,78 @@
 
 | # | Name | Student ID | Role | Responsibility |
 |---|------|------------|------|----------------|
-| 1 | **Ahad Abdul** | - | **Team Leader** | Project planning, backend conversion, database setup, final integration, testing, GitHub deployment |
-| 2 | **Hasan MD Tanvir** | 20244169 | **Frontend Developer** | HTML/CSS/JS structure, responsive layout, Bootstrap/custom UI, form validation, GIF picker integration |
-| 3 | **Das Sourav** | 20244163 | **Backend Developer** | MySQLi queries, authentication logic, file upload handlers, admin panel functionality |
-| 4 | **KC Surya** | 20244125 | **UI/UX Designer** | Visual design, color scheme, user experience, profile cards, post layouts, mobile navigation |
+| 1 | **Ahad Abdul** | - | **Team Leader** | Planning, backend core, database setup, GitHub, documentation |
+| 2 | **Hasan MD Tanvir** | 20244169 | **Frontend Developer** | HTML/CSS/JS, responsive layout, GIF picker, QR code |
+| 3 | **Das Sourav** | 20244163 | **Backend Developer** | PHP logic, login/register, like/follow, upload handlers |
+| 4 | **KC Surya** | 20244125 | **UI/UX Designer** | Visual design, profile/post layouts, mobile navigation |
 
 ---
 
 # Slide 3: Project Overview
 
-**DEU Memeverse** is a social meme-sharing platform built exclusively for Dong-Eui University students.
+**DEU Memeverse** is a social meme-sharing platform for Dong-Eui University students.
 
 ### Core Purpose
-- Students register with their name and student ID
+- Register with name, student ID, and password
 - Create posts with text, photos, or GIFs
 - Like posts and follow other students
 - View profiles and manage accounts
 - Admin panel for content moderation
 
-### Live URL (Demo)
-- Localhost: `http://localhost/deu.meme.local/auth.php`
+### Links
 - GitHub: `https://github.com/AbdullAhad1/deu-meme-local`
+- Local: `http://localhost/deu.meme.local/auth.php`
 
 ---
 
 # Slide 4: Features Implemented
 
 ### User Features
-- Registration / Login with name + student ID + password
+- Registration / Login with password
 - Create text/image/GIF posts
 - Like / unlike posts
 - Follow / unfollow users
-- Edit profile bio
-- Upload avatar
-- View user profiles
+- Edit profile bio and upload avatar
+- View user profiles and student list
 
 ### Admin Features
 - Secure admin login
-- Delete posts
-- Delete users and their content
-- JavaScript `confirm()` before delete
+- Delete posts with confirm
+- Delete users and their content with confirm
 
 ---
 
-# Slide 5: Web Programming II Requirements Checklist
+# Slide 5: Web Programming II Requirements
 
 | Requirement | Implementation |
 |-------------|----------------|
-| **MySQLi (not PDO)** | `config.php` uses procedural `mysqli_*` functions |
+| **MySQLi** | `config.php` uses procedural `mysqli_*` |
 | **password_hash()** | Used during registration |
 | **password_verify()** | Used during login |
-| **GD Thumbnails** | `upload_helpers.php` generates 300x300/150x150 thumbnails |
+| **GD Thumbnails** | `upload_helpers.php` generates thumbnails |
 | **finfo MIME Validation** | `finfo_file()` validates JPEG/PNG/GIF |
 | **uniqid() Filenames** | `uniqid() + rand()` for every upload |
 | **2MB Upload Limit** | Hardcoded in upload validator |
-| **JS confirm() on Delete** | Admin delete forms use `onsubmit="return confirm('...')"` |
+| **JS confirm() Delete** | Admin delete forms use `confirm()` |
 
 ---
 
 # Slide 6: Technology Stack
 
 ### Frontend
-- HTML5
-- CSS3 (custom dark theme with gradients)
-- JavaScript (vanilla)
+- HTML5, CSS3, JavaScript
 - Bootstrap Icons
 - GIPHY API for GIF picker
 - QR Code API for shareable link
 
 ### Backend
 - PHP 8.x
-- MySQLi (procedural)
+- MySQLi procedural
 - MySQL / MariaDB
-- GD Library for thumbnails
+- GD Library for image thumbnails
 
 ### Tools
-- XAMPP (Windows)
-- VS Code
-- Git & GitHub
-- phpMyAdmin
+- XAMPP, VS Code, Git, GitHub, phpMyAdmin
 
 ---
 
@@ -115,113 +108,40 @@
 
 ---
 
-# Slide 8: Project Architecture
-
-```
-┌─────────────────┐
-│   Browser       │
-│   (Student)     │
-└────────┬────────┘
-         │ HTTP
-         ▼
-┌─────────────────┐
-│   Apache        │
-│   (XAMPP)       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│   PHP Files     │
-│   (Pages)       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│   config.php    │
-│   MySQLi        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│   MariaDB       │
-│   deu_board     │
-└─────────────────┘
-```
-
----
-
-# Slide 9: Pages Overview
-
-| File | Purpose |
-|------|---------|
-| `auth.php` | Login / Register page |
-| `index.php` | Main feed + create post |
-| `profile.php` | User profile + avatar/bio |
-| `post.php` | Single post view |
-| `users.php` | List all DEU students |
-| `admin.php` | Admin dashboard |
-| `loading.php` | Splash redirect after login |
-| `logout.php` | Session destroy |
-| `config.php` | Database connection |
-| `upload_helpers.php` | Upload + thumbnail helpers |
-| `database.sql` | Full database schema |
-
----
-
-# Slide 10: Individual Tasks
+# Slide 8: Individual Tasks
 
 ### Ahad Abdul — Team Leader
 - Project planning and task distribution
-- Converted all PHP files from PDO to MySQLi
-- Created `config.php` with reusable DB helpers
-- Wrote `upload_helpers.php` with GD thumbnail + finfo validation
-- Set up local and XAMPP-compatible database
-- Fixed bugs during testing (password null error, missing column)
-- Created GitHub repository and pushed final code
-- Coordinated frontend/backend integration
+- Created GitHub repository and version control
+- Wrote `config.php` with reusable MySQLi helpers
+- Set up `database.sql` and XAMPP-compatible database
+- Reviewed backend code and tested features
+- Wrote `README.md` and `PRESENTATION.md`
+- Final deployment to GitHub
 
 ### Hasan MD Tanvir — Frontend Developer (20244169)
-- Built responsive layout structure
-- Implemented post feed cards and create-post form
-- Added GIF picker using GIPHY API
-- Implemented QR code share popup
-- Added mobile navigation bar
-- Ensured Bootstrap Icons and dark theme consistency
-- Tested frontend across screen sizes
+- Built all HTML pages
+- Created responsive CSS layout and dark theme
+- Implemented JavaScript for GIF picker and QR code
+- Added Bootstrap Icons and mobile navigation
 
 ### Das Sourav — Backend Developer (20244163)
-- Implemented login/registration logic
-- Built like/unlike functionality
-- Built follow/unfollow functionality
-- Implemented post creation with image uploads
-- Implemented profile bio update and avatar upload
-- Built admin delete operations for posts and users
-- Helped test backend flow end-to-end
+- Wrote PHP logic for login, register, like, follow
+- Built post creation and profile update features
+- Created `upload_helpers.php` with GD thumbnails and finfo validation
+- Implemented `password_hash()` and `password_verify()`
+- Built admin delete operations with confirm dialog
+- Enforced uniqid filenames and 2MB upload limit
 
 ### KC Surya — UI/UX Designer (20244125)
-- Designed dark meme-themed color palette
-- Created avatar placeholders and profile layouts
-- Designed post action buttons (like, follow)
-- Designed admin dashboard tables and buttons
-- Improved mobile responsiveness
-- Ensured visual consistency across all pages
+- Designed color scheme, fonts, and visual style
+- Created profile cards and post layouts
+- Designed admin dashboard
+- Improved mobile responsiveness and overall UX
 
 ---
 
-# Slide 11: Task Distribution Summary
-
-| Area | Member |
-|------|--------|
-| Planning & Integration | Ahad Abdul |
-| HTML/CSS/JS Frontend | Hasan MD Tanvir |
-| PHP Backend Logic | Das Sourav |
-| Visual Design & UX | KC Surya |
-| Testing & Bug Fixes | All members |
-| Documentation / GitHub | Ahad Abdul |
-
----
-
-# Slide 12: Key Code Highlights
+# Slide 9: Key Code Highlights
 
 ### MySQLi Connection Helper (`config.php`)
 ```php
@@ -230,19 +150,15 @@ function getDB() {
     if (!$conn) die("Connection failed");
     return $conn;
 }
-function db_prepare($sql) {
-    return mysqli_prepare(getDB(), $sql);
-}
 ```
 
-### Password Hashing & Verification (`auth.php`)
+### Password Security (`auth.php`)
 ```php
 $hash = password_hash($password, PASSWORD_DEFAULT);
-// Login
 password_verify($password, $stored_hash);
 ```
 
-### Secure Upload Helper (`upload_helpers.php`)
+### Secure Upload (`upload_helpers.php`)
 ```php
 $finfo = finfo_open(FILEINFO_MIME_TYPE);
 $mime = finfo_file($finfo, $file['tmp_name']);
@@ -251,48 +167,36 @@ $mime = finfo_file($finfo, $file['tmp_name']);
 
 ---
 
-# Slide 13: Screenshots / Demo
+# Slide 10: Screenshots / Live Demo
 
 1. **Auth Page** — Login / Register
 2. **Home Feed** — Create post + view posts
-3. **Profile Page** — Avatar, bio, stats, own posts
-4. **Users Page** — All registered DEU students
+3. **Profile Page** — Avatar, bio, stats
+4. **Users Page** — All DEU students
 5. **Admin Panel** — Delete posts/users with confirm
 
 *(Add screenshots here before presentation)*
 
 ---
 
-# Slide 14: Challenges & Solutions
+# Slide 11: Challenges & Solutions
 
 | Challenge | Solution |
 |-----------|----------|
 | PDO not allowed | Rewrote all queries to MySQLi |
-| Old DB had no password column | Added `password` column to schema and code |
+| Old DB had no password column | Added `password` column and updated schema |
 | Existing users couldn't log in | Auto-save entered password as hash on first login |
-| Uploads over 5MB | Reduced limit to 2MB and validated with finfo |
-| Admin page warning | Added `isset()` checks for session variables |
+| Uploads too large / unsafe | Reduced to 2MB and validated with finfo |
+| Admin page session warning | Added `isset()` checks |
 
 ---
 
-# Slide 15: Future Improvements
-
-- Comment system on posts
-- Real-time notifications
-- Direct messaging between students
-- Post categories / hashtags
-- Email verification
-- Report inappropriate content
-- Dark/light theme toggle
-
----
-
-# Slide 16: Conclusion
+# Slide 12: Conclusion & Q&A
 
 ### What We Learned
-- Writing secure PHP with prepared statements
-- Using GD library for image processing
-- Proper file upload validation with finfo
+- Secure PHP with prepared statements
+- GD library image processing
+- File upload validation with finfo
 - Password hashing best practices
 - Team collaboration with Git/GitHub
 
@@ -302,12 +206,7 @@ $mime = finfo_file($finfo, $file['tmp_name']);
 ### GitHub Repository
 `https://github.com/AbdullAhad1/deu-meme-local`
 
----
-
-# Slide 17: Q&A
-
-## Thank You!
-### Questions?
+## Thank You — Questions?
 
 **Team CodeCrafters**
 - Ahad Abdul — Team Leader
@@ -315,42 +214,32 @@ $mime = finfo_file($finfo, $file['tmp_name']);
 - Das Sourav — 20244163
 - KC Surya — 20244125
 
-Dong-Eui University
-Web Programming II
-
 ---
 
 # Speaker Notes
 
 ### Ahad Abdul
-- Open with project purpose
-- Explain why we chose this project
+- Open with project purpose and team roles
 - Walk through requirements checklist
+- Explain database schema and config.php
 - Handle GitHub / technical questions
 
 ### Hasan MD Tanvir
-- Demo auth page
-- Show GIF picker
-- Show QR code share feature
-- Explain responsive design
+- Demo auth page, GIF picker, QR code
+- Show responsive design
 
 ### Das Sourav
-- Explain login/registration backend
+- Explain login/register backend
 - Show like/follow logic
-- Explain admin delete flow
-- Discuss security (password_hash, prepared statements)
+- Discuss password hashing and upload security
 
 ### KC Surya
 - Explain color scheme and UX choices
-- Show profile design
-- Show mobile navigation
-- Discuss design consistency
+- Show profile design and mobile navigation
 
 ### Live Demo Steps
 1. Register a new student
-2. Create a text post
-3. Upload an image post
-4. Like a post
-5. Follow another student
-6. Update profile avatar/bio
-7. Open admin panel and delete a post
+2. Create text and image posts
+3. Like a post and follow a user
+4. Update profile avatar/bio
+5. Open admin panel and delete content
